@@ -1,0 +1,290 @@
+HTML5
+
+补充:
+1. cursor 属性规定要显示的光标的类型（形状）
+	属性值:   move   此光标指示某对象可被移动。
+
+1. HTML 新增标签
+    常见的布局标签
+	section: 表示页面中的一个内容区块,比如章节、页眉、页脚或页面的其他部分。
+	article: 表示页面中一块与上下文不相关的独立内容。比如一篇文章。
+	aside: 表示一个页面的一部分，它的内容跟这个页面的其它内容的关联性不强，或者是没有关联，单独存在。a
+		side元素通常显示成侧边栏(sidebar)或一些插入补充内容。通常用来在侧边栏显示一些定义，比如目录、索引、术语表等；
+		也可以用来显示相关的广告宣传，作者的介绍，相关链接，当前页内容简介等。
+	header: 表示页面中一个内容区块或整个页面的标题。
+	hgroup: 表示对整个页面或页面中的一个内容区块的标题进行组合。
+	footer: 表示整个页面或页面中一个内容区块的脚注。一般来说，他会包含创作者的姓名、创作日期以及创作者的联系信息。
+	nav: 表示页面中导航链接的部分。
+	figure: 表示一段独立的流内容，一般表示文档主体流内容中的一个独立单元。
+
+   媒体标签
+	video 视频
+		附加属性
+		autoplay 自动播放,可能不生效
+			    muted 开启静音  自动播放就可以生效
+		controls 是否显不默认播放控件
+		loop 循环播放
+		preload 预加载 同时设置autoplay时此属性失效
+
+	audio 音频
+		附加属性同上, 另外多加了两个
+		width 设置播放窗口宽度
+		height 设置播放窗口的高度
+
+	多浏览器支持方案:
+	<audio>
+	<source src="素材/小手拍拍.mp3">
+	<source src="素材/小手拍拍.wav">
+	<source src="素材/小手拍拍.ogg">
+	</audio>
+
+
+	<video controls>
+	<source src="素材/movie.ogg">
+	<source src="素材/movie.mp4">
+	<source src="素材/movie.webm">
+	您的浏览器不支持
+	</video>
+
+
+
+2.  新增input type类型
+	email 限制用户输入必须为Email类型
+	tel 手机号码
+	url 限制用户输入必须为URL类型
+	number 只能输入数字
+	search 具有搜索意义的表单属性
+	range 范围 滑动条
+	color 拾色器
+	time 时间
+	date 选取日、月、年
+	datetime 选取时间、日、月、年（UTC 时间）(移动支持)
+	datetime-local 选取时间、日、月、年（本地时间）
+	month 选取月、年
+	week 选取周和年
+	部分类型是针对移动设备生效的，且具有一定的兼容性，在实际应用当中可选择性的使用。
+
+3. 新增 form 表单元素
+
+    datalist 数据列表 自动补全，常与input标签配合使用
+	<input type=”text” list=”data”>
+	<datalist id=”data”>
+	<option>男</option>
+	<option>女</option>
+	<option>不详</option> 
+	</datalist>
+
+  meter 用来表示规定范围内的数量值，如磁盘使用量比例、关键词匹配程度等。
+  需要注意的是：meter不可以用来标记那些没有已知范围的任意值，如重量、高度，
+  除非已经设定了它们值的范围。
+	<meter value="81" min="0" max="100" low="60" high="80"></meter>
+
+progress 进度条
+	<progress value="22" max="100"></progress>
+
+4.新增表单属性
+	autofocus 获取焦点
+	autocomplete 自动完成，用于表单元素，也可用于表单自身(on/off)
+	form 指定表单项属于哪个form，处理复杂表单时会需要 一般一个页面只有一个form
+	novalidate 关闭验证，可用于form标签
+	required 必填项
+	pattern 正则表达式 验证表单
+	autocomplete 是否保存用户输入值 默认为on，关闭提示选择off
+	formaction 主要应用于表单内某元素提交地址与整个表单提交地址不同，进行单个地址覆盖 如：<input type="submit" formaction="xxx.action">
+5.新增表单事件
+	oninput 用户输入内容时触发，可用于移动端输入字数统计
+	oninvalid 验证不通过时触发
+
+6.  面试题: 什么是web标签语义化
+	标签语义化的目的在于能够直观的认识标签和属性的用途和作用，好处：
+	1、使页面的内容结构化：结构更清晰，便于不同的屏幕设备解析；
+	2、有利于SEO：和搜索引擎建立良好的关系，有助于爬虫更多的有效信息；
+	3、便于团队开发和维护；
+
+7.CSS 兼容处理   IE9 版本以下
+	[if gte IE 7]> <link rel="stylesheet" href="ie10.css"> <![endif]
+	[if lte IE 8]> <script src="html5shiv.min.js"></script> <![endif]
+
+8.             lte：小于或等于
+	lt ： 小于	
+	gte： 大于或等于
+	gt  ： 大于
+	! ： 不等于
+
+9.DOM 扩展
+	获取元素
+	document.querySelector("selector") html5新选择器，参数是css选择器参数,选择选中的第一个
+	document.querySelectorAll("selector") 选择多个
+
+	类名操作
+	Node.classList.add('class') 添加class
+	Node.classList.remove('class') 移除class
+	Node.classList.toggle('class') 切换class，有则移除，无则添加
+	Node.classList.contains('class') 检测是否存在class
+
+	自定义属性
+	在HTML5中我们可以自定义属性，其格式如下 data-*=""，例如:
+	data-info="我是自定义属性"，通过Node.dataset['info'] 我们便可以获取到自定义的属性值。
+	Node.dataset是以类对象形式存在的
+	当我们如下格式设置时，则需要以小驼峰格式才能正确获取
+	data-my-name="mm"，获取Node.dataset['myName']
+
+CSS3
+1.属性选择器 通过属性来选择元素
+	E[attr]	选择包含attr属性的所有元素, E为标签名
+	E[attr=mydemo]	选择属性attr的值等于mydemo字符的所有元素
+	E[attr*=mydemo]	选择属性attr的值任意位置包含mydemo字符的所有元素
+	E[attr^=mydemo]	选择属性attr的值开始位置包含mydemo字符的所有元素
+	E[attr$=demos]	选择属性attr的值结束位置包含mydemo字符的所有元素
+
+2.伪类选择器
+	:link  没有访问过的链接
+	:hover鼠标悬浮时
+	:active 点击的瞬间
+	:visited  访问过后的状态
+
+3.结构伪类 重点通过E来确定元素的父元素。
+	E:first-child	第一个子元素
+	E:last-child	最后一个子元素
+	E:nth-child(n) 第n个子元素
+	E:nth-last-child(n) 同E:nth-child(n) 相似，只是倒着计算
+	n是支持简单表达式的
+	注意: n 是从1开始的自然数 E:nth-child(0) 无效
+
+4.目标伪类
+	E:target 结合锚点进行使用，处于当前锚点的元素会被选中
+ 	div:target{ background-color: red;}
+ 	<div id="m" class="main"></div>
+ 	<a href="#m">跳到main</a>
+
+5.伪元素
+	E::before、E::after 默认行内元素 content 属性必须写
+	E::first-letter文本的第一个字母或字
+	E::first-line 文本第一行
+	E::selection 被选中的文本
+	":" 与 "::" 用于区分伪类和伪元素
+
+6.颜色
+	rgba(0,0,0,0)      Red、Green、Blue、Alpha 
+	hsla(0,20%,50%,.7)   
+	H 色调 取值范围 0~360     360表示红色、120表示绿色、240表示蓝色
+	S 饱和度 取值范围 0%~100%
+	L 亮度 取值范围 0%~100%
+	A 透明度 取值范围 0~1
+
+7.关于透明度：
+	 opacity只能针对整个盒子设置透明度，子盒子及内容会继承父盒子的透明度
+	 transparent 不可调节透明度，始终完全透明
+
+8. 文本阴影
+  text-shadow: h-shadow(x) v-shadow(y) blur(模糊半径) color(颜色)
+	h-shadow(x)水平偏移量 正值向右 负值向左
+ 	v-shadow(y)垂直偏移量 正值向下 负值向上
+	模糊半径是不能为负值
+	可以有多个影子，用逗号隔开
+
+9. 盒子阴影
+	box-shadow: h-shadow(x) v-shadow(y) blur(模糊半径) spread(扩展范围) color(颜色) inset(是否内嵌,可省略)
+
+10. css3.盒模型
+	box-sizing: content-box  实际宽度等于设置的 width 值和 border、padding 之和 (默认方式)
+	box-sizing: border-box  实际宽度就等于设置的 width 值
+
+11.边框图片
+	简写形式:  border-image
+	border-image-source 图片来源
+	border-image-slice	图片边框向内偏移量 不写单位,默认像素,也可以是百分比
+	border-image-width	边框宽度
+	border-image-outset 边框图像区域超出边框的量
+	border-image-repeat 图像边框是否应平铺(repeated)、铺满(rounded)或
+		拉伸(stretched 默认) 可以写2个值,一个代表水平方向,一个代表垂直方向
+
+12.渐变
+   线性渐变	   沿着某条直线朝一个方向产生渐变效果
+	background: linear-gradient(direction, color-stop1, color-stop2)
+	direction: 方向 可以是 角度(10deg)顺时针  也可以是 to top/left/right/bottom
+	颜色后面可以跟百分比,表示从百分几开始渐变
+	渐变的兼容写法 方向是相反的  而且不带to
+	eg: background: -webkit-linear-gradient(right ,red 60%,orange 80%);
+
+	重复渐变: background: repeating-linear-gradient(to right,red 0, red 10%, purple 10%, purple 20%)
+	可简写为: background: repeating-linear-gradient(to right,red 0 10%, purple 10% 20%)
+
+   径向渐变   从一个中心点开始沿着四周产生渐变效果
+	语法: background: radial-gradient((shape? size? (at position?))?, start-color, ..., last-color) ? 表示可省略
+	shape 渐变形状 : circle | ellipse(椭圆)
+	size 渐变大小:
+	closest-side（指定径向渐变的半径长度为从圆心到离圆心最近的边）
+	closest-corner （指定径向渐变的半径长度为从圆心到离圆心最近的角）
+	farthest-side（指定径向渐变的半径长度为从圆心到离圆心最远的边）
+	farthest-corner（指定径向渐变的半径长度为从圆心到离圆心最远的角）
+	也可指定大小: 需要注意的是 若渐变形状为圆形，则该渐变大小只能设置一个数且不能为百分数，而椭圆既可以为具体数值也可以为百分数
+	注意: 只传一个值默认形状为圆形,传入的是半径大小,不能为百分比;
+	     传两个值则代表形状为椭圆形,第一个是x轴半径,第二个是y轴半径
+	      圆心位置参数一定要置于radial-gradient()第一个参数的末尾，顺序千万不能放反了
+
+	重复渐变 : background: repeating-radial-gradient(circle at center,#f00 0,#f00 10%,#ff0 10%,#ff0 20%);
+	可简写为: background: repeating-radial-gradient(circle at center,#f00 0 10%,#ff0 10% 20%);
+
+13. 背景图片加强
+    background-size设置背景图片的尺寸
+	cover	会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏
+	contain	会自动调整缩放比例，保证图片始终完整显示在背景区域
+	注意：是需要根据高度还是宽度适配	width height 直接设置宽高(px值或者百分比)
+   background-origin(原点，起点)设置背景定位的原点
+	border-box	以边框做为参考原点；
+	padding-box	以内边距做为参考原点；
+	content-box	以内容区做为参考点；
+   background-clip设置背景区域	clip(裁切)
+	border-box	裁切边框以内为背景区域；
+	padding-box	裁切内边距以内为背景区域；
+	content-box	裁切内容区做为背景区域
+   以逗号分隔可以设置多背景，可用于自适应布局
+   background: url("img/1.jpg") no-repeat left top, url(img/2.jpg) no-repeat right top;
+
+14.  过渡
+  transition: transition-property transition-duration transition-timing-function transition-delay;
+		transition-property   规定应用过渡的 CSS 属性的名称 (一般都写 all);
+		transition-duration   定义过渡效果花费的时间。默认是 0
+		transition-timing-function: 规定过渡效果的时间曲线。默认是 "ease"。
+			linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
+		transition-delay 规定过渡效果何时开始。默认是 0
+
+   transform 用于设置转换动画 如旋转、位移、倾斜等
+	transform: scale? translate? rotate? skew?;
+	缩放 scale(x, y) 可以对元素进行水平和垂直方向的缩放，x、y的取值可为小数，不可为负值，设置一个值时表示 x、y同时进行缩放
+	移动 translate(x, y) 可以改变元素的位置，x、y可为负值
+	旋转 rotate(deg) 可以对元素进行旋转，正值为顺时针，负值为逆时针
+	倾斜 skew(x-angle,y-angle)	定义沿着 X 和 Y 轴的 2D 倾斜转换		
+	skewX(x-angle) 	定义沿着 X 轴的 2D 倾斜转换		
+	skewY(y-angle)	定义沿着 Y 轴的 2D 倾斜转换
+
+15. 3D变换
+	perspective  透视  透视会产生近大远小的效果
+	perspective有两种写法
+	a) 作为一个属性，设置给父元素，作用于所有3D转换的子元素
+	b) 作为 transform 属性的一个值，作用于元素自身,子元素的3D效果可呈现
+
+	建立三维空间体系 , 开启3D舞台   transform-style: preserve-3d; 
+                设置元素背面是否可见   backface-visibility : visible/ hidden;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

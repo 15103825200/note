@@ -1,0 +1,231 @@
+jQuery
+
+1. jQuery 是一个javaScript 代码库（或 JavaScript 框架）
+
+2. 必须先引入jQuery源文件,然后才能使用
+
+3.获取事件源       使用基本选择器, 同css 选择器一模一样
+	 var $box = $('.box');   //jq对象
+  绑定事件
+	$box.click(function () {
+               //事件处理程序
+                 });
+
+4.js 和 jQuery 入口函数的区别
+	 window.onload=function(){
+             //必须等到页面内包括图片的所有元素加载完毕后才能执行
+         }
+         $(document).ready(function(){
+             // DOM 结构绘制完毕后就执行，不必等到加载完毕
+         })
+
+5.jQuery 的其他选择器
+	层级选择器
+	      空格	       后代选择器
+	        >	        子代选择器
+	+  紧邻选择器   紧挨着的下一个兄弟
+	~  兄弟选择器   后边的所有兄弟
+
+	属性选择器
+	$('a[href]')	   具有 href 属性的 a 标签
+	$('a[href='baidu']')	href 属性为'baidu'的 a 标签
+	$('a[href!='baidu']')   href属性不为'baidu'的 a 标签,包括不具有 href 属性的 a 标签
+	$('a[href^='www']')	href 属性以'www'开头的 a 标签
+	$('a[href$='cn']')	href 属性以'cn'结尾的 a 标签
+	$('a[href*='i']')	href 属性包含'i'的 a 标签
+	$('a[href][title='内容']')	具有 href 属性且 title 属性为'内容'的 a 标签
+
+	基本筛选选择器
+	:eq(index)	匹配一个给定索引值的元素
+	:gt(index)	匹配所有大于给定索引值的元素
+	:lt(index)	匹配所有小于给定索引值的元素
+	:odd	匹配所有索引值为奇数的元素
+	:even	匹配所有索引值为偶数的元素
+	:first	获取匹配的第一个元素
+	:last	获取匹配的最后一个元素
+
+	其他选择器
+	:empty	匹配所有不包含子元素或者文本的空元素
+	:contains('text')	匹配包含给定文本的元素
+
+6.jQuery 对象转换为 DOM 对象
+	$('#btn')[0]
+	$('#btn').get(0)
+   DOM 对象转换成 jQuery 对象
+      var btn = document.getElementById('btn');
+      $(btn) ====> 把 DOM 对象转成了 jQuery 对象
+
+7.样式操作 .css()
+      设置样式, 设置的样式为行内样式
+	$('.box').css('width','200px');
+       也可以同时设置多个样式.写成 对象形式
+
+8.属性操作 .attr()
+	 $('img').attr('src', 'images/女包.jpg');// 设置属性
+
+9.类名操作
+	addClass(); 向被选元素添加一个或多个类
+	removeClass(); 从被选元素删除一个或多个类
+	toggleClass(); 对被选元素进行添加/删除类的切换操作
+	hasClass(); 判断被选元素是否存在类
+
+10.内容操作
+	   console.log($('p').text()); // 获取文本内容
+    	    $('p').text('天气不错'); // 设置文本内容
+
+	    console.log($('.box').html()); //获取标签及内容
+  	      $('.box').html('<p>我是一个p标签</p>');//设置标签及内容
+
+	 console.log($('input').val());//获取value的值
+      	  $('input').val('张三');//设置value的值
+
+	//prop( ) ?    专门用来设置选中状态
+               console.log($('.checkbox').prop('checked')); // 获取选中状态 true 或者 false
+               $('.checkbox').prop('checked', true);// 设置选中状态
+
+11.关系查找元素
+	eq(index);  获取指定的jq对象
+	find();    查找指定元素的 符合条件的后代
+	siblings(); 除了自己以外的所有兄弟节点
+	children(); 所有孩子节点
+	next(); 下一个兄弟节点
+	nextAll(); 后面的所有兄弟节点
+	nextUntil();后面的兄弟节点,直到...
+	prev();上一个兄弟节点
+	prevAll();  前面的所有兄弟节点
+	prevUntil();    前面的所有兄弟节点,直到...
+	parent(); 父节点
+	parents(); 所有父节点
+	parentsUntil();  所有父节点,直到...
+
+
+
+jQuery 动画
+
+1. 隐藏(hide)/显示动画(show)
+	$(selector).show(2000,function(){});
+	第一个参数   速度 毫秒    slow/normal/fast
+                第二参数  回调函数 
+
+2.滑入滑出动画
+	$(selector).slideDown('slow');//滑入
+	$(selector).slideUp('normal');//滑出
+	$(selector).slideToggle('fast');//滑入滑出
+
+3. 淡入淡出动画
+	$(selector).fadeIn('slow');
+	$(selector).fadeOut('slow');
+	$(selector).fadeToggle('slow');
+	$(selector).fadeTo('slow', .5); 调节透明度
+
+4. 自定义动画
+	$(selector).animate(styles,speed,easing,callback)
+
+	styles   变化的样式
+                speed   速度
+                easing   运动函数 ('swing' 先慢后快再慢,'linear'(线性匀速) )
+                callback   动画执行完后立即执行的回调函数
+
+5. 停止动画
+	stop(stopAll,goToEnd)      停止当前动画
+	参数1  :  stopAll:是否全部停止动画(停止队列中所有动画), 默认 false
+                参数2:   goToEnd: 是否将停止的动画,停在当前动画的最后一个状态, 默认 false
+                比如:    $('.box').stop(false, false);
+
+jQuery 节点操作
+1.创建节点
+        var $span = $('<span>我是一个span</span>');
+
+2.插入节点
+	append( )
+		参数 jq对象 或 标签字符串 或 DOM对象
+		作用：在被选元素内部的最后一个子元素（或内容）后面插入。
+
+	appendTo( )
+        		 $(selector).appendTo(node);
+        		 把$(selector)追加到node中去
+
+	prepend()
+		作用：在被选元素内部的第一个子元素前面追加内容或节点。（从前插入）
+
+	after()
+		作用：在被选元素之后，作为兄弟元素插入内容或节点
+
+	before()
+		作用：在被选元素之前，作为兄弟元素插入内容或节点
+
+	 clone( )  复制节点       深复制
+
+
+BOM 相关
+ width() height()   获取宽高(不包括border 和 padding) num类型
+           $('.box').width(500);   //设置宽高,参数是数字
+
+坐标值操作
+	offset()
+	作用：获取或设置元素相对于文档的位置
+	$(selector).offset();
+	$(selector).offset({left:100, top: 150});
+	position()
+	作用：获取相对于其最近的具有定位的父元素的位置。
+	$(selector).position();
+	       注意：只能获取，不能设置。
+	scrollTop( )  网页卷进去的高度
+	作用：获取或者设置元素垂直方向滚动的位置
+	$(selector).scrollTop();
+	$(selector).scrollTop(100);
+
+on 方式绑定事件
+     $('.box').on('click',function(){
+              alert('456');
+          })
+
+ off()移除on方式绑定的事件
+        $('.box').off('click');
+
+事件委托
+	使用 on 方式，将事件委托给父级元素代理
+	 $('ul').on('click', 'li', function () {
+                 console.log($(this).text());
+   	     })
+
+事件对象 Event
+event.stopPropagation()； 阻止事件冒泡
+event.preventDefault(); 阻止默认行为
+       例如:	 <a target="_blank" href="https://www.baidu.com/">百度2</a>
+   	   $('a').click(function (event) {
+      	      //取消默认事件  后  不能打开百度页面
+       	     event.preventDefault();
+     		   })
+
+event.data 传递给事件处理程序的额外数据
+event.target 实际触发事件的对象，不一定===this
+event.currentTarget 事件绑定的对象(事件源),和 this 相同
+event.pageX 鼠标相对于文档左部边缘的位置
+event.type 事件类型：click，mouseover…
+event.which 鼠标的按键类型：左 1 中 2 右 3
+event.keyCode 键盘按键代码
+
+链式编程
+	 $('.inner-box2').css('width', '100px').parent().css('width', '1000px').end().text('回到了内部盒子');
+	原理：return this; 调用”任何”一个方法都是返回了对象本身
+	通常情况下，只有设置操作才能把链式编程延续下去。因为获取操作的时候，会返回获取到的相应的值，无法返回 this。
+	end(); // 结束当前链最近的一次过滤操作，并且返回匹配元素之前的状态。
+
+隐式迭代
+	隐式迭代的意思是：在方法的内部会为匹配到的所有元素进行循环遍历，执行相应的方法
+	如果获取的是多元素的值，大部分情况下返回的是第一个元素的值。
+        	    console.log($('li').css('color'));//返回第一个li元素的颜色属性值
+
+each
+	大部分情况下是不需要使用 each 方法的，因为 jQuery 的隐式迭代特性。
+	如果要对每个元素做不同的处理，这时候就用到了 each 方法
+	作用：遍历 jQuery 对象集合，为每个匹配的元素执行一个函数
+	$(selector).each(function(index,element){});
+	Element 是一个 js 对象，需要转换成 jquery 对象
+            
+
+
+
+
+

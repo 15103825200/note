@@ -1,0 +1,536 @@
+<!DOCTYPE html><html><head>
+      <title>06.BOM&#x7B14;&#x8BB0;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\yy\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.4.3\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="bom">BOM</h1>
+
+<p>&#x6D4F;&#x89C8;&#x5668;&#x5BF9;&#x8C61;&#x6A21;&#x578B;</p>
+<h3 class="mume-header" id="%E4%B8%89%E5%A4%A7%E5%AE%B6%E6%97%8F%E5%85%B6%E4%B8%80-offset-%E5%AE%B6%E6%97%8F">&#x4E09;&#x5927;&#x5BB6;&#x65CF;&#x5176;&#x4E00; <code>Offset</code> &#x5BB6;&#x65CF;</h3>
+
+<p>&#x5BB6;&#x65CF;&#x6210;&#x5458;&#xFF1A; <code>offsetWidth</code> <code>offsetHeight</code> <code>offsetLeft</code> <code>offsetTop</code> <code>offsetParent</code></p>
+<h4 class="mume-header" id="offsetwidth-offsetheight-%E6%A3%80%E6%B5%8B%E7%9B%92%E5%AD%90%E8%87%AA%E8%BA%AB%E5%AE%BD%E9%AB%98"><code>offsetWidth</code>  <code>offsetHeight</code>  &#xFF08;&#x68C0;&#x6D4B;&#x76D2;&#x5B50;&#x81EA;&#x8EAB;&#x5BBD;&#x9AD8;&#xFF09;</h4>
+
+<ol>
+<li>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4ED6;&#x4EEC;&#x7ED1;&#x5B9A;&#x5728;&#x4E86;&#x6240;&#x6709;&#x7684;&#x8282;&#x70B9;&#x5143;&#x7D20;&#x4E0A;&#x3002;&#x83B7;&#x53D6;&#x4E4B;&#x540E;&#xFF0C;&#x53EA;&#x8981;&#x8C03;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x591F;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;&#x5BBD;&#x548C;&#x9AD8;&#x3002;</p>
+</li>
+<li>
+<p>offset&#x5BBD;/&#x9AD8;  =  &#x76D2;&#x5B50;&#x81EA;&#x8EAB;&#x7684;&#x5BBD;/&#x9AD8;(width/height) + padding +border</p>
+</li>
+</ol>
+<h4 class="mume-header" id="offsetleft-%E5%92%8C-offsettop-%E6%A3%80%E6%B5%8B%E8%B7%9D%E7%A6%BB%E6%9C%89%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%88%B6%E7%9B%92%E5%AD%90%E7%9A%84%E5%B7%A6%E4%B8%8A%E9%9D%A2%E7%9A%84%E8%B7%9D%E7%A6%BB"><code>offsetLeft</code>  &#x548C;  <code>offsetTop</code>  &#xFF08;&#x68C0;&#x6D4B;&#x8DDD;&#x79BB;&#x6709;&#x5B9A;&#x4F4D;&#x7684;&#x7236;&#x76D2;&#x5B50;&#x7684;&#x5DE6;/&#x4E0A;&#x9762;&#x7684;&#x8DDD;&#x79BB;&#xFF09;</h4>
+
+<ol>
+<li>&#x5982;&#x679C;&#x7236;&#x7EA7;&#x90FD;&#x6CA1;&#x6709;&#x5B9A;&#x4F4D;&#x5219;&#x4EE5; <code>body</code> &#x4E3A;&#x51C6;, <code>offsetLeft</code> &#x4ECE;&#x7236;&#x4EB2;&#x7684; <code>padding</code> &#x5F00;&#x59CB;&#x7B97;,&#x7236;&#x4EB2;&#x7684; <code>border</code> &#x4E0D;&#x7B97;&#x3002;</li>
+<li>&#x5728;&#x7236;&#x76D2;&#x5B50;&#x6709;&#x5B9A;&#x4F4D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>offsetLeft == style.left</code>(&#x53BB;&#x6389; px)</li>
+</ol>
+<h4 class="mume-header" id="offsettopleft-%E5%92%8C-styletopleft-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>offsetTop/Left</code> &#x548C; <code>style.top/left</code> &#x7684;&#x533A;&#x522B;&#xFF1A;</h4>
+
+<ol>
+<li>
+<p>&#x6700;&#x5927;&#x533A;&#x522B;&#x5728;&#x4E8E; <code>offsetTop/Left</code> &#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x6CA1;&#x6709;&#x5B9A;&#x4F4D;&#x7684;&#x76D2;&#x5B50;&#x8DDD;&#x79BB;&#x5DE6;&#x4FA7;&#x7684;&#x8DDD;&#x79BB;&#x3002;&#x800C; <code>style.top/left</code> &#x4E0D;&#x53EF;&#x4EE5;</p>
+</li>
+<li>
+<p><code>offsetTop/Left</code> &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6574;&#x6570;(&#x6570;&#x503C;&#x578B;)&#xFF0C;&#x800C; <code>style.top/left</code> &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x9664;&#x4E86;&#x6570;&#x5B57;&#x5916;&#x8FD8;&#x5E26;&#x6709;&#x5355;&#x4F4D;&#xFF1A;<code>px</code></p>
+</li>
+<li>
+<p><code>offsetTop/Left</code> &#x53EA;&#x8BFB;&#xFF0C;&#x800C; <code>style.top/left</code> &#x53EF;&#x8BFB;&#x5199;&#x3002;&#xFF08;&#x53EA;&#x8BFB;&#x662F;&#x83B7;&#x53D6;&#x503C;&#xFF0C;&#x53EF;&#x5199;&#x662F;&#x8D4B;&#x503C;&#xFF09;</p>
+</li>
+<li>
+<p><code>obj.style.xxx</code> &#x53EA;&#x80FD;&#x83B7;&#x53D6;&#x884C;&#x5185;&#x6837;&#x5F0F;</p>
+</li>
+</ol>
+<h4 class="mume-header" id="offsetparent-%E6%A3%80%E6%B5%8B%E7%88%B6%E7%B3%BB%E7%9B%92%E5%AD%90%E4%B8%AD%E5%B8%A6%E6%9C%89%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%88%B6%E7%9B%92%E5%AD%90%E8%8A%82%E7%82%B9"><code>offsetParent</code>   &#xFF08;&#x68C0;&#x6D4B;&#x7236;&#x7CFB;&#x76D2;&#x5B50;&#x4E2D;&#x5E26;&#x6709;&#x5B9A;&#x4F4D;&#x7684;&#x7236;&#x76D2;&#x5B50;&#x8282;&#x70B9;&#xFF09;</h4>
+
+<ol>
+<li>
+<p>&#x8FD4;&#x56DE;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x7236;&#x7EA7; &#xFF08;&#x5E26;&#x6709;&#x5B9A;&#x4F4D;&#xFF09;<br>
+&#x2003;&#x2002;&#x5982;&#x679C;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x7684;&#x7236;&#x7EA7;&#x5143;&#x7D20;&#x6CA1;&#x6709;&#x8FDB;&#x884C; CSS &#x5B9A;&#x4F4D;(absolute,relative,fixed) ,&#x5219;<code>offsetParent</code> &#x4E3A; <code>body</code></p>
+</li>
+<li>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x7684;&#x7236;&#x7EA7;&#x5143;&#x7D20;&#x4E2D;&#x6709; CSS &#x5B9A;&#x4F4D; <code>offsetParent</code> &#x53D6;&#x6700;&#x8FD1;&#x7684;&#x90A3;&#x4E2A;&#x7236;&#x7EA7;&#x5143;&#x7D20;&#x3002;</p>
+</li>
+</ol>
+<h3 class="mume-header" id="%E5%8A%A8%E7%94%BB">&#x52A8;&#x753B;</h3>
+
+<ol>
+<li>&#x52A8;&#x753B;&#x7684;&#x79CD;&#x7C7B;
+<ul>
+<li>&#x95EA;&#x73B0;&#x52A8;&#x753B;&#xFF08;&#x88AB;&#x6DD8;&#x6C70;&#xFF09;</li>
+<li>&#x5300;&#x901F;&#x52A8;&#x753B;</li>
+<li>&#x7F13;&#x52A8;&#x52A8;&#x753B;</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x6B65;&#x957F;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#xFF1A;<br>
+&#x6B65;&#x957F; = (target - leader) / 10;<br>
+&#x6B65;&#x957F; = (&#x7EC8;&#x70B9; - &#x8D77;&#x70B9;) / 10;</p>
+</blockquote>
+<h2 class="mume-header" id="%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-event">&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;  Event</h2>
+
+<ol>
+<li>
+<p><code>Event</code> &#x5BF9;&#x8C61;&#x4EE3;&#x8868;&#x4E8B;&#x4EF6;&#x7684;&#x72B6;&#x6001;</p>
+</li>
+<li>
+<p>&#x83B7;&#x5F97;event&#x5BF9;&#x8C61;&#x517C;&#x5BB9;&#x6027;&#x5199;&#x6CD5; <code>event || window.event</code></p>
+</li>
+<li>
+<p>target&#x4E0E;currentTarget</p>
+</li>
+</ol>
+<ul>
+<li><code>event.target</code> &#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x7684;&#x76EE;&#x6807;	&#x83B7;&#x5F97;target&#x517C;&#x5BB9;&#x578B;&#x5199;&#x6CD5;  <code>event.target || event.srcElement</code></li>
+<li><code>event.currentTarget</code>  &#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;&#x7684;&#x76EE;&#x6807;</li>
+</ul>
+<ol start="4">
+<li>
+<p><code>e.pageX/Y</code>		&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x7684;&#x5730;&#x65B9;&#x76F8;&#x5BF9;&#x4E8E;&#x9875;&#x9762;&#x7684;&#x4F4D;&#x7F6E;<br>
+<code>e.clientX/Y</code>	&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x7684;&#x5730;&#x65B9;&#x76F8;&#x5BF9;&#x4E8E;&#x53EF;&#x89C6;&#x533A;&#x57DF;&#x7684;&#x4F4D;&#x7F6E;<br>
+<code>e.screenX/Y</code>	&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x7684;&#x5730;&#x65B9;&#x76F8;&#x5BF9;&#x4E8E;&#x5C4F;&#x5E55;&#x7684;&#x4F4D;&#x7F6E;<br>
+<code>e.offsetX/Y</code>	&#x8868;&#x793A;&#x9F20;&#x6807;&#x6307;&#x9488;&#x4F4D;&#x7F6E;&#x76F8;&#x5BF9;&#x4E8E;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;</p>
+</li>
+<li>
+<p><code>event.type</code>	&#x4E8B;&#x4EF6;&#x7684;&#x7C7B;&#x578B;</p>
+</li>
+<li>
+<p><code>event.key</code>  &#x952E;&#x76D8;&#x6309;&#x952E;&#x7801;</p>
+</li>
+<li>
+<p><code>event.button</code> &#x9F20;&#x6807;&#x70B9;&#x51FB;&#x7684;&#x6309;&#x952E;(&#x53EA;&#x8BA4;&#x8BC6;&#x4E09;&#x4E2A;&#x952E;) &#x53EF;&#x5728; <code>onmousedown</code> &#x4E8B;&#x4EF6;&#x4E2D;&#x6D4B;&#x8BD5;</p>
+<ul>
+<li>=== 0 &#x60A8;&#x70B9;&#x51FB;&#x4E86;&#x9F20;&#x6807;&#x5DE6;&#x952E;</li>
+<li>=== 1 &#x60A8;&#x70B9;&#x51FB;&#x4E86;&#x9F20;&#x6807;&#x4E2D;&#x952E;</li>
+<li>=== 2 &#x60A8;&#x70B9;&#x51FB;&#x4E86;&#x9F20;&#x6807;&#x53F3;&#x952E;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">&#x4E8B;&#x4EF6;&#x59D4;&#x6258;</h2>
+
+<ol>
+<li>&#x901A;&#x8FC7;&#x76D1;&#x542C;&#x4E00;&#x4E2A;&#x7236;&#x5143;&#x7D20;&#xFF0C;&#x6765;&#x7ED9;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;&#xFF0C;&#x51CF;&#x5C11;&#x76D1;&#x542C;&#x6B21;&#x6570;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x5347;&#x901F;&#x5EA6;&#x3002;</li>
+<li>&#x7531;&#x4E8E;&#x4E8B;&#x4EF6;&#x7684;&#x5192;&#x6CE1;&#x673A;&#x5236;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E8B;&#x4EF6;&#x59D4;&#x6258;&#x7684;&#x65B9;&#x5F0F;&#x7ED9;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;,&#x591A;&#x7528;&#x4E8E;ul&#x76D1;&#x542C;&#x4E8B;&#x4EF6;&#x66F4;&#x6539;li&#x7684;&#x60C5;&#x666F;</li>
+</ol>
+<h2 class="mume-header" id="%E9%98%BB%E6%AD%A2%E5%86%92%E6%B3%A1%E5%92%8C%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6">&#x963B;&#x6B62;&#x5192;&#x6CE1;&#x548C;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;</h2>
+
+<ol>
+<li>&#x963B;&#x6B62;&#x5192;&#x6CE1;</li>
+</ol>
+<ul>
+<li><code>event.stopPropagation();</code>		&#x5B58;&#x5728;&#x517C;&#x5BB9;&#x95EE;&#x9898;	(&#x9762;&#x8BD5;&#x9898;)</li>
+<li>IE &lt;= 10 &#x4E13;&#x7528; <code>event.cancelBubble = true</code></li>
+<li>&#x517C;&#x5BB9;&#x5199;&#x6CD5; <code>event.stopPropagation?event.stopPropagation():event.cancelBubble = true;</code></li>
+</ul>
+<ol start="2">
+<li>&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;:</li>
+</ol>
+<ul>
+<li>
+<p>&#x4E00;&#x822C;&#x6709;&#x4E24;&#x79CD;: &#x963B;&#x6B62;a&#x6807;&#x7B7E;&#x94FE;&#x63A5;&#x8DF3;&#x8F6C;, &#x963B;&#x6B62;form&#x8868;&#x5355;&#x63D0;&#x4EA4;<br>
+event.preventDefault() || event.returnValue = false</p>
+</li>
+<li>
+<p>&#x517C;&#x5BB9;&#x5199;&#x6CD5;:<code>event.preventDefault?event.preventDefault():event.returnValue = false;</code></p>
+</li>
+</ul>
+<h2 class="mume-header" id="scroll-%E5%AE%B6%E6%97%8F"><code>Scroll</code> &#x5BB6;&#x65CF;</h2>
+
+<p>&#x5BB6;&#x65CF;&#x6210;&#x5458;: <code>scrollWidth</code> , <code>scrollHeight</code> , <code>scrollTop</code> , <code>scrollLeft</code></p>
+<h4 class="mume-header" id="scrollwidth-%E5%92%8C-scrollheight"><code>scrollWidth</code> &#x548C; <code>scrollHeight</code></h4>
+
+<ul>
+<li>&#x68C0;&#x6D4B;&#x76D2;&#x5B50;&#x7684;&#x5BBD;&#x9AD8;</li>
+<li>&#x5185;&#x5BB9;&#x672A;&#x6EA2;&#x51FA;&#x65F6;,&#x503C;=&#x76D2;&#x5B50;&#x5BBD;&#x9AD8;+padding</li>
+<li>&#x5185;&#x5BB9;&#x6EA2;&#x51FA;&#x65F6;  &#x503C;=&#x5185;&#x5BB9;&#x5BBD;&#x9AD8;+padding
+<ul>
+<li>&#x65E0;&#x6EDA;&#x52A8;&#x6761;,  padding &#x53EA;&#x663E;&#x793A; &#x4E0A;&#x9762;&#x7684;&#x548C;&#x5DE6;&#x9762;&#x7684;</li>
+<li>&#x6709;&#x6EDA;&#x52A8;&#x6761;&#x65F6;, &#x5DE6;&#x53F3;&#x7684;padding&#x53EA;&#x663E;&#x793A;&#x4E00;&#x4E2A; ,&#x4E0A;&#x4E0B;&#x7684;padding&#x663E;&#x793A;&#x4E24;&#x4E2A;</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="scrolltop-scrollleft%E5%8F%AF%E8%AF%BB%E5%86%99%E7%9A%84"><code>scrollTop</code> , <code>scrollLeft</code>	&#x53EF;&#x8BFB;&#x5199;&#x7684;</h4>
+
+<ol>
+<li>&#x524D;&#x63D0;: &#x76EE;&#x6807;&#x5143;&#x7D20;&#x6709;&#x6EDA;&#x52A8;&#x6761;</li>
+<li>&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x6216;&#x7236;&#x7C7B;&#x906E;&#x6321;&#x7684;&#x5934;&#x90E8;&#x548C;&#x5DE6;&#x8FB9;&#x90E8;&#x5206;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x6216;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5185;&#x5BB9;&#x5782;&#x76F4;&#x6EDA;&#x52A8;&#x6216;&#x6C34;&#x5E73;&#x6EDA;&#x52A8;&#x7684;&#x50CF;&#x7D20;&#x6570;&#x3002;element.scrollTop/Left = XXX</li>
+</ol>
+<h4 class="mume-header" id="%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E5%8D%B7%E5%85%A5%E7%9A%84%E9%AB%98%E5%BA%A6">&#x83B7;&#x53D6;&#x9875;&#x9762;&#x5377;&#x5165;&#x7684;&#x9AD8;&#x5EA6;</h4>
+
+<p>&#x517C;&#x5BB9;&#x5199;&#x6CD5;&#xFF1A;<br>
+<code>var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop</code></p>
+<hr>
+<h4 class="mume-header" id="onscroll-%E4%BA%8B%E4%BB%B6"><code>onscroll</code> &#x4E8B;&#x4EF6;</h4>
+
+<ul>
+<li>
+<p>&#x5F53;&#x5143;&#x7D20;&#x7684;&#x6EDA;&#x52A8;&#x6761;&#x6EDA;&#x52A8;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+<li>
+<p><code>onscroll</code>&#x4E8B;&#x4EF6;&#x8C8C;&#x4F3C;&#x4EFB;&#x4F55;&#x5B9E;&#x4F53;&#x5143;&#x7D20;&#x90FD;&#x53EF;&#x4EE5;&#x7ED1;&#x5B9A;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x5B9E;&#x4F53;&#x5143;&#x7D20;&#x5305;&#x62EC;DOM&#x5143;&#x7D20;&#x3001;window&#x5143;&#x7D20;&#x3001;document&#x5143;&#x7D20;&#x3002;</p>
+</li>
+<li>
+<p>&#x7528;&#x6CD5;&#xFF1A;<code>element.onscroll=function(){};</code></p>
+</li>
+<li>
+<p>&#x6CE8;&#x610F;: &#x8BBE;&#x7F6E;&#x6B64;&#x4E8B;&#x4EF6;&#x7684;&#x5143;&#x7D20;&#x4E00;&#x5B9A;&#x8981;&#x6709;&#x6EDA;&#x52A8;&#x6761;</p>
+</li>
+</ul>
+<h4 class="mume-header" id="%E5%85%B3%E4%BA%8Ewindowscrollwindowscrollbywindowscrollto-%E4%B8%8D%E5%85%BC%E5%AE%B9ie">&#x5173;&#x4E8E;<code>window.scroll()</code>,<code>window.scrollBy()</code>,<code>window.scrollTo()</code> &#x4E0D;&#x517C;&#x5BB9;IE</h4>
+
+<ul>
+<li>
+<p><code>window.scroll(x,y)</code>&#x662F;&#x8BA9;window&#x6EDA;&#x52A8;&#x6761;&#x6EDA;&#x52A8;&#x5230;(x,y)&#x5750;&#x6807;&#x3002;</p>
+</li>
+<li>
+<p><code>window.scrollBy(-x,-y)</code>&#x662F;&#x8BA9;window&#x6EDA;&#x52A8;&#x6761;&#x76F8;&#x5BF9;&#x6EDA;&#x52A8;&#x5230;&#x67D0;&#x4E2A;&#x5750;&#x6807;&#xFF0C;- 10&#x5373;&#x76F8;&#x5BF9;&#x5411;&#x5DE6;/&#x5411;&#x4E0A;&#x6EDA;&#x52A8;10&#x50CF;&#x7D20;&#x3002;</p>
+</li>
+<li>
+<p><code>window.scrollTo(x,y)</code>&#x548C;<code>window.scroll(x,y)</code>&#x4E00;&#x6837;&#x3002;</p>
+</li>
+<li>
+<p><code>element.scrollIntoView(boolean)</code> &#x8BA9;&#x5143;&#x7D20;&#x8D34;&#x9876;&#x6216;&#x8005;&#x8D34;&#x5E95;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x53EF;&#x89C6;&#x533A;&#x57DF;</p>
+<ul>
+<li>true &#x8D34;&#x9876;</li>
+<li>false &#x8D34;&#x5E95;</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="client-%E5%AE%B6%E6%97%8F"><code>Client</code> &#x5BB6;&#x65CF;</h2>
+
+<p>&#x5BB6;&#x65CF;&#x6210;&#x5458; <code>clientWidth</code> <code>clientHeight</code> <code>clientTop</code> <code>clientLeft</code></p>
+<h4 class="mume-header" id="clientwidth-clientheight"><code>clientWidth</code> <code>clientHeight</code></h4>
+
+<ol>
+<li>
+<p><code>clientWidth</code> <code>clientHeight</code></p>
+<ul>
+<li>&#x68C0;&#x6D4B;&#x76D2;&#x5B50;&#x7684;&#x5BBD;&#x9AD8;</li>
+<li>&#x81EA;&#x8EAB;&#x5BBD;&#x9AD8; + padding</li>
+<li>&#x5185;&#x5BB9;&#x6EA2;&#x51FA;&#x4E0D;&#x7B97;,&#x6EDA;&#x52A8;&#x6761;(&#x9ED8;&#x8BA4;&#x5BBD;&#x5EA6;17)&#x4E0D;&#x7B97;</li>
+</ul>
+</li>
+<li>
+<p><code>document.documentElement.clientWidth/clientHeight</code></p>
+<ul>
+<li>&#x83B7;&#x53D6;&#x6D4F;&#x89C8;&#x5668;&#x53EF;&#x89C6;&#x533A;&#x57DF;&#x7684;&#x5BBD;&#x9AD8;</li>
+<li>&#x4E0D;&#x8BA1;&#x7B97;&#x6EDA;&#x52A8;&#x6761;	&#x6CA1;&#x6709;&#x517C;&#x5BB9;&#x95EE;&#x9898;</li>
+</ul>
+</li>
+<li>
+<p><code>window.innerWidth/innerHeight</code></p>
+<ul>
+<li>&#x8868;&#x793A;&#x83B7;&#x53D6; window &#x53EF;&#x89C6;&#x533A;&#x57DF;&#x7684;&#x5185;&#x90E8;&#x5927;&#x5C0F;(&#x5E26;&#x6EDA;&#x52A8;&#x6761;)</li>
+<li>IE &lt;= 8 &#x4E0D;&#x652F;&#x6301;</li>
+</ul>
+</li>
+<li>
+<p><code>window.outerWidth/outerHeight</code></p>
+<ul>
+<li>&#x8868;&#x793A;&#x6574;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x4F53;&#x7684;&#x5927;&#x5C0F;</li>
+<li>IE &lt;= 8 &#x4E0D;&#x652F;&#x6301;</li>
+</ul>
+</li>
+</ol>
+<h4 class="mume-header" id="clienttop-clientleft%E5%8F%AA%E8%AF%BB"><code>clientTop</code> <code>clientLeft</code>		&#x53EA;&#x8BFB;</h4>
+
+<ul>
+<li>&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x9876;&#x90E8;&#x548C;&#x5DE6;&#x4FA7;&#x8FB9;&#x6846;(border)&#x7684;&#x5BBD;&#x5EA6;</li>
+</ul>
+<h2 class="mume-header" id="%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E6%A0%B7%E5%BC%8F">&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x7684;&#x6837;&#x5F0F;</h2>
+
+<ol>
+<li>
+<p>&#x884C;&#x5185;&#x6837;&#x5F0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>ele.style.styleName</code> &#x83B7;&#x53D6;</p>
+</li>
+<li>
+<p>&#x5185;&#x8054;&#x6837;&#x5F0F;&#x548C;&#x5916;&#x8054;&#x6837;&#x5F0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;</p>
+</li>
+</ol>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">/**
+* &#x517C;&#x5BB9;&#x5199;&#x6CD5;,&#x83B7;&#x53D6;&#x4EFB;&#x610F;&#x5143;&#x7D20;&#x7684;css&#x6837;&#x5F0F;
+**/</span>
+<span class="token keyword">function</span> <span class="token function">getStyle</span><span class="token punctuation">(</span><span class="token parameter">ele<span class="token punctuation">,</span>styleName</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>ele<span class="token punctuation">.</span>currentStyle<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> ele<span class="token punctuation">.</span>currentStyle<span class="token punctuation">[</span>styleName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> window<span class="token punctuation">.</span><span class="token function">getComputedStyle</span><span class="token punctuation">(</span>ele<span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">[</span>styleName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

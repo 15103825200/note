@@ -1,0 +1,149 @@
+
+tagName 属性     获取元素的标签名
+document.getElementById("demo").tagName;    // 结果DIV  IMG等等
+
+
+1. 事件
+	JS 是以事件驱动为核心的一门语言。
+	事件的三要素：事件源、事件、事件驱动程序
+
+常见的事件如下：
+
+属性	当情况发生时,出现此事件
+onclick	鼠标点击某个对象
+onabort	图像加载被中断
+onblur	元素失去焦点
+onchange	用户改变域的内容
+ondblclick	鼠标双击某个对象
+onerror	当加载文档或图像时发生某个错误
+onfocus	元素获得焦点
+onkeydown	某个键盘的键被按下
+onkeypress	某个键盘的键被按下或按住
+onkeyup	某个键盘的键被松开
+onload	某个页面或图像被完成加载
+	当页面加载（文本和图片）完毕的时候，触发 onload 事件。
+onmousedown	某个鼠标按键被按下
+onmousemove	鼠标被移动
+onmouseout	鼠标从某元素移开
+onmouseover	鼠标被移到某元素之上
+onmouseup	某个鼠标按键被松开
+onreset	重置按钮被点击
+onresize	窗口或框架被调整尺寸
+onselect	文本被选定
+onsubmit	提交按钮被点击
+onunload	用户退出页面
+
+2. 获取事件源的方式（DOM 节点的获取)
+var div1 = document.getElementById("box1"); //方式一：通过id获取单个标签
+var arr1 = document.getElementsByTagName("div"); //方式二：通过 标签名 获得 标签数组，所以有s
+var arr2 = document.getElementsByClassName("hehe"); //方式三：通过 类名 获得 标签数组，所以有s
+
+3. 绑定事件的方式
+方式一：直接绑定匿名函数
+ div1.onclick = function() {
+		alert("我是弹出的内容");
+		};
+方式二：行内绑定
+<div id="box1" onclick="fn()"></div>
+<script type="text/javascript">
+	function fn() {
+		alert("我是弹出的内容");
+	}
+</script>
+
+4. 事件驱动程序
+我们可以通过事件驱动程序操作标签的属性和样式
+div1.onclick = function() {
+		div1.style.width = "200px"; //属性值要写引号
+		div1.style.height = "200px";
+		div1.style.backgroundColor = "red"; //属性名是backgroundColor，不是background-color
+
+什么是 DOM 
+	 文档对象模型
+	目的是为了能让 js 操作 html 元素而制定的一个规范。
+
+DOM节点
+	在 HTML 当中，一切都是节点：（非常重要）
+	元素节点：HMTL 标签。
+	文本节点：标签中的文字（比如标签之间的空格、换行）
+	属性节点：：标签的属性。
+	整个 html 文档就是一个文档节点。所有的节点都是 Object。
+
+DOM节点的访问关系
+	父节点  parentNode
+	兄弟节点   nextSibling    下一个节点（包括标签、空文档和换行节点）
+			     IE678 版本：指下一个元素节点
+		  nextElementSibling      下一个元素节点
+		previousSibling 	前一个节点（包括标签、空文档和换行节点）
+				IE678 版本：指前一个元素节点
+		previousElementSibling   前一个元素节点
+	子节点   firstChild   第一个子节点（包括标签、空文档和换行节点）
+			IE678 版本：指第一个子元素节点
+		firstElementChild     第一个子元素节点
+		lastChild   最后一个子节点（包括标签、空文档和换行节点）
+			IE678 版本：指最后一个子元素节点
+		  lastElementChild	最后一个子元素节点
+
+	所有子节点  childNodes     子节点的集合（包括元素节点、所有属性、文本节点）
+		  children	子元素节点的集合
+			它只返回 HTML 节点，甚至不返回文本节点
+			在 IE6/7/8 中包含注释节点（在 IE678 中，注释节点不要写在里面）
+
+	
+nodeType 属性	
+	nodeType == 1 表示的是元素节点
+	nodeType == 2 表示是属性节点。
+	nodeType == 3 是文本节点。
+	nodeType == 8 注释节点
+
+上面 节点的访问关系都是属性
+下面 节点的操作都是函数(方法)
+
+创建节点
+	新的标签(元素节点) = document.createElement("标签名");
+	var a1 = document.createElement("li"); //创建一个li标签
+	var a2 = document.createElement("adbc"); //创建一个不存在的标签
+
+插入节点
+	方式一：父节点.appendChild(新的子节点);
+		在父节点的最后插入一个新的子节点。
+	方式二：父节点.insertBefore(新的子节点, 作为参考的子节点);
+		在参考节点前插入一个新的节点。
+		如果参考节点为 null，那么他将在父节点里面的最后插入一个子节点。
+
+删除节点	
+	父节点.removeChild(子节点);
+	用父节点删除子节点。必须要指定是删除哪个子节点。
+	删除自己这个节点  :  node1.parentNode.removeChild(node1);
+
+复制节点（克隆节点）
+	要复制的节点.cloneNode(); //括号里不带参数和带参数false，效果是一样的。只复制节点本身，不复制文本。
+	要复制的节点.cloneNode(true);//带参数 true：既复制节点本身，也复制文本。
+
+设置节点的属性
+1. 获取节点的属性值
+	方式一:      
+		元素节点.属性
+		 console.log(pEl.id);
+		 console.log(pEl.className);//class 在js 当中是 关键字,所以使用className
+		 pEl.title = '不凡学院';//添加属性名及属性值
+		pEl.className = 'text';//修改类名,会覆盖之前的类名
+	方式二：
+		元素节点.getAttribute("属性名称");
+
+2、修改节点的属性值
+	方式 1 ：
+		myNode.src = "images/2.jpg"; //修改src的属性值
+	方式 2：
+		元素节点.setAttribute(属性名, 新的属性值);
+		myNode.setAttribute("src", "images/3.jpg");
+
+3、删除节点的属性
+	元素节点.removeAttribute(属性名);
+	myNode.removeAttribute("id");
+
+innerHTML 和 innerText 的区别
+	innerHTML：双闭合标签里面的内容（识别标签, 获取到标签本身,修改内容时,修改标签本身）
+	innerText：双闭合标签里面的内容（不识别标签,不会获取标签本身, 修改内容时,不会修改标签本身）
+
+
